@@ -38,7 +38,7 @@ app.set("view engine", "ejs");
 app.engine("html", require("ejs").renderFile);
 
 /** Routes */
-require("./routes/main")(app);
+require("./routes/main")(app, viewsDir);
 
 app.listen(port, () => {
   console.log("Welcome to the mid-term application!");
