@@ -7,19 +7,20 @@ const app = express();
 const port = process.env.PORT || 8089;
 
 /** Database Coonection */
-const db = mysql.createConnection({
+const db = mysql.createPool({
+    connectionLimit : 10,
     host: process.env.DBHOST || "localhost",
     user: process.env.DBUSER || "zach",
     password: process.env.DBPASSWORD || "zach",
     database: process.env.DBNAME || "uol_cm2040_caloriebuddy"
 });
-//connect to database
-db.connect((err) => {
-    if(err) {
-        throw err; 
-    }
-    console.log("Connected to database");
-});
+//connect to database, will be connected and released during queries
+// db.connect((err) => {
+//     if(err) {
+//         throw err; 
+//     }
+//     console.log("Connected to database");
+// });
 global.db = db;
 
 /** POST Req.Body Parser */
