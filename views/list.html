@@ -31,17 +31,15 @@
 
 <div class="container">
     <% if (food_items.length > 0){ %>
-        <form id="form" method="POST" action="" onsubmit="return popupCalculation(this);">
-            <button type="submit" class="btn btn-primary btn-block"><u>Cal</u>culate <u>Cal</u>ories!</button>
-            <br />
-            <div class="row">
-                <% food_items.forEach(function(food){ %>
-                    <div class="col-sm-4" id="food-card-<%= food.id %>">
-                        <%- include('./partials/card.html', {food: food}) %>
-                    </div>
-                <% }) %>
-            </div>
-        </form>
+        <button id="calButton" type="submit" class="btn btn-primary btn-block"><u>Cal</u>culate <u>Cal</u>ories!</button>
+        <br />
+        <div class="row">
+            <% food_items.forEach(function(food){ %>
+                <div class="col-sm-4" id="food-card-<%= food.id %>">
+                    <%- include('./partials/card.html', {food: food}) %>
+                </div>
+            <% }) %>
+        </div>
     <% } %>
     <hr class="featurette-divider">
 </div>

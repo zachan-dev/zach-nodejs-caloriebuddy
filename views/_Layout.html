@@ -57,11 +57,17 @@
         <% } 
         %>
         <script>
+            $(function() {
+                $('#calButton').click(function() {
+                    popupCalculation();
+                });
+            });
+
             function removeTrailingZeros(floatStr) {
                 return floatStr.replace(/\.?0+$/, "");
             }
 
-            function popupCalculation(form) { // for the food list / search results
+            function popupCalculation() { // for the food list / search results
                 var totalAmount = 0;
 
                 // empty the tables
@@ -142,8 +148,6 @@
                         $("#emptyModal").modal("show");
                     }
                 }
-
-                return false; // prevent form submission
             }
         </script>
 
