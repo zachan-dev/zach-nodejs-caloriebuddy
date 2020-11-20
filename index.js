@@ -6,6 +6,8 @@ const mysql = require("mysql");
 const app = express();
 const port = process.env.PORT || 8089;
 
+const viewsDir = process.env.VIEWSDIR || ""; // for routing use
+
 /** Database Coonection */
 const db = mysql.createPool({
     connectionLimit : 10,
