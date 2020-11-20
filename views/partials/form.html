@@ -16,7 +16,7 @@
     <div class="form-group">
         <label for="typicalValue">* Typical Value: </label>
         <div class="input-group">
-            <input id="typicalValue" name="typicalValue" type="number" class="form-control" aria-describedby="typicalValueHelp" placeholder="Typical Value" step=".01" value="<%- food.typicalValue %>" required>
+            <input id="typicalValue" name="typicalValue" type="number" class="form-control" aria-describedby="typicalValueHelp" placeholder="Typical Value" step=".01" max="999.99" value="<%- food.typicalValue %>" required>
             <span class="input-group-btn" style="width:5px;"></span>
             <select id="unit" name="unit" class="form-control" style="margin-left:-1px; max-width: 25%;" required>
                 <option value="g" <% if (food.unit === 'g'){ %> selected <% } %>>gram (g)</option>
@@ -31,7 +31,7 @@
     <div class="form-group">
         <label for="calories">* Calories: </label>
         <div class="input-group">
-            <input id="calories" name="calories" type="number" class="form-control" placeholder="Calories" step=".01" value="<%- food.calories %>" required>
+            <input id="calories" name="calories" type="number" class="form-control" placeholder="Calories" step=".01" max="999.99" value="<%- food.calories %>" required>
             <div class="input-group-append">
                 <span class="input-group-text">kCal</span>
             </div>
@@ -40,7 +40,7 @@
     <div class="form-group">
         <label for="carbs">* Carbs: </label>
         <div class="input-group">
-            <input id="carbs" name="carbs" type="number" class="form-control" placeholder="Carbs" step=".01" value="<%- food.carbs %>" required>
+            <input id="carbs" name="carbs" type="number" class="form-control" placeholder="Carbs" step=".01" max="999.99" value="<%- food.carbs %>" required>
             <div class="input-group-append">
                 <span class="input-group-text weight-unit">g</span>
             </div>
@@ -49,7 +49,7 @@
     <div class="form-group">
         <label for="fat">* Fat: </label>
         <div class="input-group">
-            <input id="fat" name="fat" type="number" class="form-control" placeholder="Fat" step=".01" value="<%- food.fat %>" required>
+            <input id="fat" name="fat" type="number" class="form-control" placeholder="Fat" step=".01" max="999.99" value="<%- food.fat %>" required>
             <div class="input-group-append">
                 <span class="input-group-text weight-unit">g</span>
             </div>
@@ -58,7 +58,7 @@
     <div class="form-group">
         <label for="protein">* Protein: </label>
         <div class="input-group">
-            <input id="protein" name="protein" type="number" class="form-control" placeholder="Protein" step=".01" value="<%- food.protein %>"  required>
+            <input id="protein" name="protein" type="number" class="form-control" placeholder="Protein" step=".01" max="999.99" value="<%- food.protein %>"  required>
             <div class="input-group-append">
                 <span class="input-group-text weight-unit">g</span>
             </div>
@@ -67,7 +67,7 @@
     <div class="form-group">
         <label for="salt">* Salt: </label>
         <div class="input-group">
-            <input id="salt" name="salt" type="number" class="form-control" placeholder="Salt" step=".01" value="<%- food.salt %>" required>
+            <input id="salt" name="salt" type="number" class="form-control" placeholder="Salt" step=".01" max="999.99" value="<%- food.salt %>" required>
             <div class="input-group-append">
                 <span class="input-group-text weight-unit">g</span>
             </div>
@@ -76,7 +76,7 @@
     <div class="form-group">
         <label for="sugar">* Sugar: </label>
         <div class="input-group">
-            <input id="sugar" name="sugar" type="number" class="form-control" placeholder="Sugar" step=".01" value="<%- food.sugar %>" required>
+            <input id="sugar" name="sugar" type="number" class="form-control" placeholder="Sugar" step=".01" max="999.99" value="<%- food.sugar %>" required>
             <div class="input-group-append">
                 <span class="input-group-text weight-unit">g</span>
             </div>
