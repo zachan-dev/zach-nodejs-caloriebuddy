@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <link rel="icon" href="./assets/images/calorie-icon.ico">
+
+        <title><%- title %> | CalorieBuddy</title>
+
+        <!-- Bootstrap core CSS -->
+        <link href="./assets/css/bootstrap.min.css" rel="stylesheet">
+
+        <!-- Font Awesome CSS-->
+        <link href="./assets/css/font-awesome.min.css" rel="stylesheet">
+
+        <!-- Custom styles for this template -->
+        <link href="./assets/css/carousel.css" rel="stylesheet">
+    </head>
+
+    <body data-new-gr-c-s-check-loaded="14.984.0" data-gr-ext-installed="">
+        <%- include('./partials/header.html') %>
+
+        <main role="main">
+        
+            <%- body %>
+
+            <!-- FOOTER -->
+            <%- include('./partials/footer.html') %>
+        </main>
+
+        <!-- Bootstrap core JavaScript
+        ================================================== -->
+        <!-- Placed at the end of the document so the pages load faster -->
+        <script src="./assets/js/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script>window.jQuery || document.write('<script src="./assets/js/jquery-3.2.1.slim.min.js"><\/script>')</script>
+        <script src="./assets/js/popper.min.js"></script>
+        <script src="./assets/js/bootstrap.min.js"></script>
+        <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
+        <script src="./assets/js/holder.min.js"></script>
+        <script src='./assets/js/jquery.touchSwipe.min.js'></script>
+        
+        <% if (title === 'Home') { %>
+            <script>
+                $(function() {
+                    $("#myCarousel").swipe({
+                        swipe: function (event, direction, distance, duration, fingerCount, fingerData) {
+                            if (direction == 'left') $(this).carousel('next');
+                            if (direction == 'right') $(this).carousel('prev');
+                        },
+                        allowPageScroll: "vertical" 
+                    });
+                });
+            </script>
+        <% } 
+        %>
+        <script>
+            function removeTrailingZeros(floatStr) {
+                return floatStr.replace(/\.?0+$/, "");
+            }
+
+            function popupCalculation(form) { // for the food list / search results
+                var totalAmount = 0;
+
+                // empty the tables
+                $('#calModal-summary-table .calories').empty();
+                $('#calModal-summary-table .carbs').empty();
+                $('#calModal-summary-table .fat').empty();
+                $('#calModal-summary-table .protein').empty();
+                $('#calModal-summary-table .salt').empty();
+                $('#calModal-summary-table .sugar').empty();
+
+                $('#calModal-cart-table').empty();
+
+
+                if ($("input.amount") !== undefined) {
+                    var summaryCount = {
+                        // nutrition
+                        calories: 0,
+                        carbs: 0,
+                        fat: 0,
+                        protein: 0,
+                        salt: 0,
+                        sugar: 0
+                    };
+
+                    $("input.amount").each(function(index, inputA) {
+                        var amount = $(inputA).val();
+                        totalAmount += amount;
+                        var food_id = $(inputA).attr("data-food-id");
+                        var food = {
+                            name: $("#card-" + food_id + " .name").text(),
+                            typical: $("#card-" + food_id + " .typical").text(),
+                            // nutrition
+                            calories: $("#card-" + food_id + " .calories").text(),
+                            carbs: $("#card-" + food_id + " .carbs").text(),
+                            fat: $("#card-" + food_id + " .fat").text(),
+                            protein: $("#card-" + food_id + " .protein").text(),
+                            salt: $("#card-" + food_id + " .salt").text(),
+                            sugar: $("#card-" + food_id + " .sugar").text()
+                        };
+
+                        if (amount > 0) {
+                            // Summary
+                            summaryCount.calories += amount * parseFloat(food.calories);
+                            summaryCount.carbs += amount * parseFloat(food.carbs);
+                            summaryCount.fat += amount * parseFloat(food.fat);
+                            summaryCount.protein += amount * parseFloat(food.protein);
+                            summaryCount.salt += amount * parseFloat(food.salt);
+                            summaryCount.sugar += amount * parseFloat(food.sugar);
+
+                            // Cart
+                            var row = $('<tr>');
+                            var AColumn = $('<td>'); // amount
+                            var XColumn = $('<td>'); // cross
+                            var TColumn = $('<td>'); // typical value & food name
+                            
+                            AColumn.text(amount);
+                            XColumn.text("X");
+                            TColumn.text(food.typical + ' ' + food.name);
+                            row.append(AColumn);
+                            row.append(XColumn);
+                            row.append(TColumn);
+
+                            $('#calModal-cart-table').append(row);
+                        }
+                    });
+
+                    if (totalAmount > 0) {
+                        // Summary
+                        $('#calModal-summary-table .calories').text(removeTrailingZeros(summaryCount.calories.toFixed(2)));
+                        $('#calModal-summary-table .carbs').text(removeTrailingZeros(summaryCount.carbs.toFixed(2)));
+                        $('#calModal-summary-table .fat').text(removeTrailingZeros(summaryCount.fat.toFixed(2)));
+                        $('#calModal-summary-table .protein').text(removeTrailingZeros(summaryCount.protein.toFixed(2)));
+                        $('#calModal-summary-table .salt').text(removeTrailingZeros(summaryCount.salt.toFixed(2)));
+                        $('#calModal-summary-table .sugar').text(removeTrailingZeros(summaryCount.sugar.toFixed(2)));
+                        
+                        $("#calModal").modal("show");
+                    } else {
+                        $("#emptyModal").modal("show");
+                    }
+                }
+
+                return false; // prevent form submission
+            }
+        </script>
+
+    </body>
+</html>

@@ -1,0 +1,57 @@
+<div id="myCarousel" class="carousel slide" data-ride="carousel">
+  <ol class="carousel-indicators">
+    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+    <li data-target="#myCarousel" data-slide-to="1"></li>
+    <li data-target="#myCarousel" data-slide-to="2"></li>
+  </ol>
+  <div class="carousel-inner">
+    <div class="carousel-item first-slide active">
+      <div class="container">
+        <div class="carousel-caption text-left">
+          <h1>Calorie Buddy.</h1>
+          <p>A digital calorie counter to help you manage your diet. Start control your diet today!</p>
+          <p><a class="btn btn-lg btn-primary" href="./addfood" role="button">Start dieting!</a></p>
+        </div>
+      </div>
+    </div>
+    <div class="carousel-item second-slide">
+      <div class="container">
+        <div class="carousel-caption">
+          <h1>Calorie Buddy.</h1>
+          <p>Calorie Buddy is developed by <a href="https://www.linkedin.com/in/zach-chan-hk/">Zach Chan</a>. This is a programming assignment for his UOL-CM2040 course.</p>
+          <p><a class="btn btn-lg btn-primary" href="./about" role="button">Learn more</a></p>
+        </div>
+      </div>
+    </div>
+    <div class="carousel-item third-slide">
+      <div class="container">
+        <div class="carousel-caption text-right">
+          <h1>Calorie Buddy.</h1>
+          <p>Once you added dishes, you can view the details of them by listing your food.</p>
+          <p><a class="btn btn-lg btn-primary" href="./list" role="button">List your food</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
+
+
+<!-- Marketing messaging and featurettes
+================================================== -->
+<!-- Wrap the rest of the page in another container to center all the content. -->
+
+<div class="container marketing">
+
+  <%- include('./partials/features.html') %>
+
+  <hr class="featurette-divider">
+
+</div><!-- /.container -->

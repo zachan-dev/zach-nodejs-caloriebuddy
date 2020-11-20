@@ -1,0 +1,50 @@
+<header>
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+      <a href="./">
+        <img src="./assets/images/calorie-icon.jpg" width="36" height="36"/>
+      </a>
+      <a class="navbar-brand" href="./">CalorieBuddy</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item <% if (title === 'Home') { %>active<% } %>">
+            <a class="nav-link" href="./">Home 
+                <% if (title === 'Home') { %><span class="sr-only">(current)</span> <% } %>
+            </a>
+          </li>
+          <li class="nav-item <% if (title === 'About') { %>active<% } %>">
+            <a class="nav-link" href="./about">About
+                <% if (title === 'About') { %><span class="sr-only">(current)</span> <% } %>
+            </a>
+          </li>
+          <li class="nav-item <% if (title === 'AddFood') { %>active<% } %>">
+            <a class="nav-link" href="./addfood">Add
+                <% if (title === 'AddFood') { %><span class="sr-only">(current)</span> <% } %>
+            </a>
+          </li>
+          <li class="nav-item <% if (title === 'Search') { %>active<% } %>">
+            <a class="nav-link" href="./search">Search
+                <% if (title === 'Search') { %><span class="sr-only">(current)</span> <% } %>
+            </a>
+          </li>
+          <li class="nav-item <% if (title === 'Update') { %>active<% } %>">
+            <a class="nav-link" href="./update">Update
+                <% if (title === 'Update') { %><span class="sr-only">(current)</span> <% } %>
+            </a>
+          </li>
+          <li class="nav-item <% if (title === 'List') { %>active<% } %>">
+            <a class="nav-link" href="./list">List
+                <% if (title === 'List') { %><span class="sr-only">(current)</span> <% } %>
+            </a>
+          </li>
+        </ul>
+        <form action="./search-result" class="form-inline mt-2 mt-md-0">
+          <input name="keyword" class="form-control mr-sm-2" type="text" placeholder="Search" 
+                aria-label="Search" value="<% if (title === 'Search') { %><%- keyword %><% } %>" required>
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+      </div>
+    </nav>
+</header>

@@ -1,0 +1,30 @@
+<div class="heading">
+  <img src="./assets/images/search.png" alt="Success" width="140" height="140">
+  <h1>
+    <% if(title === "Update"){ %>
+      Search food to update
+    <% } else { %>
+      Search for food
+    <% } %>
+  </h1>
+  <p class="lead">The app will search by name and list all food items, using the keyword in the search bar.</p>
+</div>
+
+<div class="container">
+
+  <form action="./search-result" method="GET"> <!--method="GET" can be omitted-->
+    <div class="input-group">
+      <input id="search-box" class="form-control" type="text" name="keyword" value="" placeholder="Search by food name..." required>
+      <div class="input-group-append">
+        <button class="btn btn-secondary" type="submit">
+          <i class="fa fa-search"></i>
+        </button>
+      </div>
+    </div>
+  </form>
+
+  <br />
+  <a href="./list">View all the food items</a>
+
+  <hr class="featurette-divider">
+</div>
