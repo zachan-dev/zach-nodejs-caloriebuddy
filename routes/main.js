@@ -106,7 +106,8 @@ module.exports = function(app, viewsDir) {
         // execute sql query
         db.query(sqlquery, (err, result) => {
             if (err) {
-                res.redirect("/");
+                console.error(err.message);
+                res.render(viewsDir + "error.html", { title: 'Error', error: err.message});
             }
             res.render(viewsDir + "list.html", {title: 'List', food_items: result});
         });
