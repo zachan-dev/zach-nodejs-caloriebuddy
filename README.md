@@ -1,5 +1,5 @@
 <h1 align="center">
-  <a href="https://vrvajwyy.coursera-apps.org/topic7/mid-term/"><img src="https://zach-nodejs-caloriebuddy.herokuapp.com/assets/images/calorie-icon.jpg" alt="CalorieBuddy" width="200"></a>
+  <a href="https://zach-nodejs-caloriebuddy.herokuapp.com/"><img src="https://zach-nodejs-caloriebuddy.herokuapp.com/assets/images/calorie-icon.jpg" alt="CalorieBuddy" width="200"></a>
   <br>
   Databases, Network and the Web
   <br>
@@ -14,12 +14,18 @@
 Written & Developed by [Zach, Siu Him CHAN](https://www.linkedin.com/in/zach-chan-hk/)
 (SN : **190340436**)
 
-The website is avaliable [here on Heroku](https://zach-nodejs-caloriebuddy.herokuapp.com/), or [here on Coursera](https://vrvajwyy.coursera-apps.org/topic7/mid-term/)
+The website is avaliable [here on Heroku](https://zach-nodejs-caloriebuddy.herokuapp.com/), <del>or [here on Coursera](https://vrvajwyy.coursera-apps.org/topic7/mid-term/)</del>
+
+## STATEMENT
+By the time of implementation and deployment, mysql service on Coursera is down, such that so many students cannot connect to the database successfully. You can find relevent posts from Slack #cm2040-databases-networks-web. Here is an example post that we all suffer by that time:
+Click [here](https://londoncs.slack.com/archives/CU6FK1W75/p1608912547311200) to view the post on Slack.
+This is the reason why I used Heroku for deployment instead.
 
 ## Table of Contents
 
 <!-- toc -->
 
+- [STATEMENT](#statement)
 - [Table of Contents](#table-of-contents)
 - [Introduction](#introduction)
   - [What is CalorieBuddy?](#what-is-caloriebuddy)
@@ -135,7 +141,7 @@ $ tree .
 
 ## List of Requirements
 
-### [**R1: Home Page**](https://vrvajwyy.coursera-apps.org/topic7/mid-term/)
+### [**R1: Home Page**](https://zach-nodejs-caloriebuddy.herokuapp.com/)
 #### **R1A**
 *R1A: Display the name of the web application.*
 
@@ -167,7 +173,7 @@ Each link in the navbar is like this in the code, they are a tags which points t
 </li>
 ```
 
-### [**R2: About Page**](https://vrvajwyy.coursera-apps.org/topic7/mid-term/about)
+### [**R2: About Page**](https://zach-nodejs-caloriebuddy.herokuapp.com/about)
 #### **R2A**
 *R2A: Display information about the web application including your name as the developer. Display a link to the home page or a navigation bar that contains links to other pages.*
 
@@ -183,7 +189,7 @@ You can find my name as the developer on the About Page at the bottom of the Abo
 
 Since all pages uses the same _Layout.html, they share the same navbar that contains links to other pages.
 
-### [**R3: Add food page**](https://vrvajwyy.coursera-apps.org/topic7/mid-term/addfood)
+### [**R3: Add food page**](https://zach-nodejs-caloriebuddy.herokuapp.com/addfood)
 #### **R3A**
 *R3A: Display a form to users to add a new food item to the database. The form should consist of the following items: name, typical values, unit of the typical value, calories, carbs, fat, protein, salt, and sugar. Display a link to the home page or a navigation bar that contains links to other pages.*
 
@@ -281,7 +287,7 @@ Screenshot of the add food result page:
 
 At the bottom of each food card, we have "Edit" and "Delete" buttons to redirect to ./update and ./delete correspondingly, using food id as a request query in the GET method.
 
-### [**R4: Search food page**](https://vrvajwyy.coursera-apps.org/topic7/mid-term/search)
+### [**R4: Search food page**](https://zach-nodejs-caloriebuddy.herokuapp.com/search)
 #### **R4A**
 *R4A: Display a form to users to search for a food item in the database. 'The form should contain just one field - to input the name of the food item'. Display a link to the home page or a navigation bar that contains links to other pages.*
 
@@ -364,7 +370,7 @@ As I have mentioned in R4B, I achieve this by wrapping '%' around the keyword in
 SELECT * FROM foods WHERE name like '%a%' ORDER BY name;
 ```
 
-### [**R5: Update food page**](https://vrvajwyy.coursera-apps.org/topic7/mid-term/update)
+### [**R5: Update food page**](https://zach-nodejs-caloriebuddy.herokuapp.com/update)
 #### **R5A**
 *R5A: Display search food form. Display a link to the home page or a navigation bar that contains links to other pages.*
 
@@ -559,7 +565,7 @@ Upon successful deletion, views\fooddeleted.html will be rendered to display a m
 
 ![image](https://zachan.xyz/downloads/caloriebuddy-md-img/22.png "Update Food Page: Deleted")
 
-### [**R6: List foods page**](https://vrvajwyy.coursera-apps.org/topic7/mid-term/list)
+### [**R6: List foods page**](https://zach-nodejs-caloriebuddy.herokuapp.com/list)
 #### **R6A**
 *R6A: Display all foods stored in the database including name, typical values, unit of the typical value, calories, carbs, fat, protein, salt, and sugar, sorted by name.*
 
