@@ -16,7 +16,7 @@ const db = mysql.createPool({
     host: process.env.DBHOST || "localhost",
     user: process.env.DBUSER || "root",
     password: process.env.DBPASSWORD || "root",
-    database: process.env.DBNAME || "uol_cm2040_caloriebuddy"
+    database: process.env.DBNAME || "calorieBuddy"
 });
 //connect to database, will be connected and released during queries
 // db.connect((err) => {
