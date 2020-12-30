@@ -8,14 +8,14 @@ const mysql = require("mysql");
 const app = express();
 const port = process.env.PORT || 8089;
 
-const viewsDir = process.env.VIEWSDIR || ""; // for routing use
+const viewsDir = process.env.VIEWSDIR || "../topic7/mid-term/views/"; // for routing use
 
 /** Database Coonection */
 const db = mysql.createPool({
     connectionLimit : 10,
     host: process.env.DBHOST || "localhost",
-    user: process.env.DBUSER || "zach",
-    password: process.env.DBPASSWORD || "zach",
+    user: process.env.DBUSER || "root",
+    password: process.env.DBPASSWORD || "root",
     database: process.env.DBNAME || "uol_cm2040_caloriebuddy"
 });
 //connect to database, will be connected and released during queries

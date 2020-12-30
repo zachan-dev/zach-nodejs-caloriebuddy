@@ -1,5 +1,5 @@
 <h1 align="center">
-  <a href="https://zach-nodejs-caloriebuddy.herokuapp.com/"><img src="https://zach-nodejs-caloriebuddy.herokuapp.com/assets/images/calorie-icon.jpg" alt="CalorieBuddy" width="200"></a>
+  <a href="https://zach-nodejs-caloriebuddy.herokuapp.com/"><img src="./views/assets/images/calorie-icon.jpg" alt="CalorieBuddy" width="200"></a>
   <br>
   Databases, Network and the Web
   <br>
@@ -14,12 +14,12 @@
 Written & Developed by [Zach, Siu Him CHAN](https://www.linkedin.com/in/zach-chan-hk/)
 (SN : **190340436**)
 
-The website is avaliable [here on Heroku](https://zach-nodejs-caloriebuddy.herokuapp.com/), <del>or [here on Coursera](https://vrvajwyy.coursera-apps.org/topic7/mid-term/)</del>
+The website is avaliable [here on Heroku](https://zach-nodejs-caloriebuddy.herokuapp.com/), or [here on Coursera](https://vrvajwyy.coursera-apps.org/topic7/mid-term/).
 
 ## STATEMENT
 By the time of implementation and deployment, mysql service on Coursera is down, such that so many students cannot connect to the database successfully. You can find relevent posts from Slack #cm2040-databases-networks-web. Here is an example post that we all suffer by that time:
 Click [here](https://londoncs.slack.com/archives/CU6FK1W75/p1608912547311200) to view the post on Slack.
-This is the reason why I used Heroku for deployment instead.
+This is the reason why I also used Heroku for deployment instead.
 
 ## Table of Contents
 
@@ -145,26 +145,26 @@ $ tree .
 #### **R1A**
 *R1A: Display the name of the web application.*
 
-Home Page is at ./. This route simply renders views\index.html.
+Home Page is at ./. This route simply renders views\index.html. You can find the routing handler on line 10 in main.js.
 
-You can find the name the html file on line 11:
+In the carousel, I displayed the name with h1 tag to make it eye catchy. You can find the name on line 11 in index.html:
 ```html
 <h1>Calorie Buddy.</h1>
 ```
 You can also find it on the Home Page (circled in red):
 
-![image](https://zachan.xyz/downloads/caloriebuddy-md-img/1.png "Name of the web app")
+![image](./README-imgs/1.png "Name of the web app")
 
 #### **R1B**
 *R1B: Display links to other pages or a navigation bar that contains links to other pages.*
 
 On the Home page, you can see a styled navbar at the top that contains links to the other pages:
 
-![image](https://zachan.xyz/downloads/caloriebuddy-md-img/2.png "Navigation bar")
+![image](./README-imgs/2.png "Navigation bar")
 
 You can find the corresponding header navbar coding in views\partials\header.html. It is used by views\\_Layout.html, and then wrapped by views\index.html.
 
-Each link in the navbar is like this in the code, they are a tags which points to corresponding endpoints, e.g. "About" points to ./about endpoint. The routing of these endpoints are handled by routes\main.js in the server side. From the below code, you can see I used ejs to detemine the styling if they involve variables that the server side Node.js used.
+Each link in the navbar is like this in the code, they are 'a' tags which points to corresponding endpoints, e.g. "About" points to ./about endpoint. The routing of these endpoints are handled by routes\main.js in the server side. From the below code, you can see I used ejs to detemine the styling if they involve variables that the server side Node.js used.
 ```html
 <li class="nav-item <% if (title === 'About') { %>active<% } %>">
   <a class="nav-link" href="./about">About
@@ -177,15 +177,17 @@ Each link in the navbar is like this in the code, they are a tags which points t
 #### **R2A**
 *R2A: Display information about the web application including your name as the developer. Display a link to the home page or a navigation bar that contains links to other pages.*
 
-You can find the about page at ./about. This route simply renders views\about.html.
+You can find the about page at ./about. This route simply renders views\about.html. You can find the routing handler on line 20 in main.js.
+
+I have done the about page using a static html web page. As for the design, the content is divided into 5 sections: heading, links to other pages, purpose of the app, description of the app and the developer information. You can view views\about.html to see the coding to do it.
 
 You can find information about the web app on the About Page here:
 
-![image](https://zachan.xyz/downloads/caloriebuddy-md-img/3.png "About Page: App Info")
+![image](./README-imgs/3.png "About Page: App Info")
 
 You can find my name as the developer on the About Page at the bottom of the About Page:
 
-![image](https://zachan.xyz/downloads/caloriebuddy-md-img/4.png "About Page: Developer Info")
+![image](./README-imgs/4.png "About Page: Developer Info")
 
 Since all pages uses the same _Layout.html, they share the same navbar that contains links to other pages.
 
@@ -193,11 +195,11 @@ Since all pages uses the same _Layout.html, they share the same navbar that cont
 #### **R3A**
 *R3A: Display a form to users to add a new food item to the database. The form should consist of the following items: name, typical values, unit of the typical value, calories, carbs, fat, protein, salt, and sugar. Display a link to the home page or a navigation bar that contains links to other pages.*
 
-You can find the form on the add food page here at ./addfood. This route simply renders views\addfood.html.
+You can find the form on the add food page here at ./addfood. This route simply renders views\addfood.html. You can find the routing handler on line 30 in main.js.
 
 The form contains all the field items specified and looks like this:
 
-![image](https://zachan.xyz/downloads/caloriebuddy-md-img/5.png "Add Food Page: the Form")
+![image](./README-imgs/5.png "Add Food Page: the Form")
 
 The \* on the form means the field is mandatory. So all fields are required to submit a food item.
 
@@ -214,6 +216,7 @@ For each field item, the front-end coding looks like this:
     </div>
 </div>
 ```
+This code displays a label and an input field for the field item "Calories".
 The coding varies when the field types are different. Calories, Carbs, Fat, Protein, Salt and Sugar are all numerical fields, while food name is a string field. Unit of the typical value is a dropdown select field. Users can use g, L, tbsp, cup or oz. as the unit.
 
 Since all pages uses the same _Layout.html, they share the same navbar that contains links to other pages.
@@ -233,14 +236,12 @@ On clicking the submit button of the form, it posts to ./foodadded route:
 ```
 The if statement in the ejs is just a switch for different pages. Since this is the form for Add Food Page, the POST action equals ./foodadded route.
 
-The form data then is collected and handled by ./foodadded route handler in main.js. On line 20:
+The form data then is collected and handled by ./foodadded route handler in main.js. On line 40:
 ```js
-/** Add Result Page (Food Added or Error) */
 app.post("/foodadded", function(req, res){
-    // saving data in database
     let sqlquery = "INSERT INTO foods (name, typicalValue, unit, calories, carbs, fat, protein, salt, sugar) VALUES (?,?,?,?,?,?,?,?,?);";
-    // execute sql query
     let newrecord = [req.body.name, req.body.typicalValue, req.body.unit, req.body.calories, req.body.carbs, req.body.fat, req.body.protein, req.body.salt, req.body.sugar];
+
     db.query(sqlquery, newrecord, (err, result) => {
         if (err) {
             console.error(err.message);
@@ -256,11 +257,11 @@ The SQL statement is defined using the request body and is executed using db.que
 
 Take a food item say Milk Chocolate as an example, I inputted the data to the form:
 
-![image](https://zachan.xyz/downloads/caloriebuddy-md-img/6.png "Add Food Page: Filled form")
+![image](./README-imgs/6.png "Add Food Page: Filled form")
 
 After form submittion, the food record is stored in the database. By using MySQL Workbench, we can see the record in the table:
 
-![image](https://zachan.xyz/downloads/caloriebuddy-md-img/7.png "Database: Added food item")
+![image](./README-imgs/7.png "Database: Added food item")
 
 #### **R3C**
 *R3C: Display a message indicating that add operation has been done.*
@@ -283,7 +284,7 @@ The "food" contains the food id from the SQL result, and also the food item data
 
 Screenshot of the add food result page:
 
-![image](https://zachan.xyz/downloads/caloriebuddy-md-img/8.png "Food added result page: Food Card")
+![image](./README-imgs/8.png "Food added result page: Food Card")
 
 At the bottom of each food card, we have "Edit" and "Delete" buttons to redirect to ./update and ./delete correspondingly, using food id as a request query in the GET method.
 
@@ -291,15 +292,15 @@ At the bottom of each food card, we have "Edit" and "Delete" buttons to redirect
 #### **R4A**
 *R4A: Display a form to users to search for a food item in the database. 'The form should contain just one field - to input the name of the food item'. Display a link to the home page or a navigation bar that contains links to other pages.*
 
-You can find the form on the search food page at ./search. This route simply renders views\search.html.
+You can find the form on the search food page at ./search. This route simply renders views\search.html. You can find the routing handler on line 68 in main.js.
 
 The form contains only one field: the name of the food item to be searched. It looks like this:
 
-![image](https://zachan.xyz/downloads/caloriebuddy-md-img/9.png "Search Page: the Form")
+![image](./README-imgs/9.png "Search Page: the Form")
 
 The name field is required to submit the search food form.
 
-HTML code of the form looks like this:
+HTML code of the form looks like this in views\search.html:
 
 ```html
 <form action="./search-result" method="GET">
@@ -322,15 +323,12 @@ Since all pages uses the same _Layout.html, they share the same navbar that cont
 
 On clicking the search button of the form, it posts to ./search-result route.
 
-The form data then is collected and handled by ./search-result route handler in main.js. On line 42:
+The form data then is collected and handled by ./search-result route handler in main.js. On line 78:
 ```js
-/** Search Results Page (List or Error) */
 app.get("/search-result", (req, res) => {
-    // searching in the database, using the food name, ordered ascendingly by name
     let word = ['%' + req.query.keyword + '%'];
     let sqlquery = "SELECT * FROM foods WHERE name like ? ORDER BY name;";
 
-    // execute sql query
     db.query(sqlquery, word, (err, result) => {
         if (err) {
             var error_msg = "No food item found with the keyword you have entered: " + req.query.keyword + "; error: "+ err.message;
@@ -348,20 +346,20 @@ If no search results or error occurs, it will be redirected to the Error page, d
 
 Say I want to search for "Milk Chocolate" I created before, I inputted the keyword to the search bar, then the following search result page is returned:
 
-![image](https://zachan.xyz/downloads/caloriebuddy-md-img/10.png "Search Result Page: Found")
+![image](./README-imgs/10.png "Search Result Page: Found")
 
 In views\list.html, similar to add food result page, it renders food cards using views\partials\card.html to display the food data, using ejs.
 
 To test error page, I search using "Dark Chocolate" as keyword. Since I didn't add any food item named "Dark Chocolate", it returns "No food item found" page like this:
 
-![image](https://zachan.xyz/downloads/caloriebuddy-md-img/11.png "Search Result Page: Not Found")
+![image](./README-imgs/11.png "Search Result Page: Not Found")
 
 #### **R4C**
 *R4C: Going beyond, search food items containing part of the food name as well as the whole food name. As an example, when searching for ‘bread’ display data related to ‘pitta bread’, ‘white bread’, ‘wholemeal bread’, and so on.*
 
 To test this functionality I search using keyword = "a", and found the following 3 food items in the search results:
 
-![image](https://zachan.xyz/downloads/caloriebuddy-md-img/12.png "Search Result Page: Name Containing")
+![image](./README-imgs/12.png "Search Result Page: Name Containing")
 
 Since all 3 names contain the word "a", this functionality works on my search bar.
 
@@ -380,7 +378,7 @@ You can find the form on the update food page at ./update. Without any query par
 
 The form contains only one field: the name of the food item to be searched. It looks like this:
 
-![image](https://zachan.xyz/downloads/caloriebuddy-md-img/13.png "Update Food Page: the Form")
+![image](./README-imgs/13.png "Update Food Page: the Form")
 
 On form submittion, the form data will be submit to ./search-result route.
 
@@ -397,29 +395,26 @@ The form data then is collected and handled by ./search-result route handler in 
 
 If no search results or error occurs, it will be redirected to the Error page, displaying the error message.
 
-![image](https://zachan.xyz/downloads/caloriebuddy-md-img/11.png "Update Food Page: Not Found")
+![image](./README-imgs/11.png "Update Food Page: Not Found")
 
 If there are food items that matches the criteria, it renders views\list.html with the keyword and the returned food item(s) data.
 
 Say I want to update "Milk Chocolate" I created before, I inputted the keyword to the search bar, here's the food card returned:
 
-![image](https://zachan.xyz/downloads/caloriebuddy-md-img/14.png "Update Food Page: Search Results")
+![image](./README-imgs/14.png "Update Food Page: Search Results")
 
 For each food card you see in this web app, notice at the bottom there are two buttons: "Edit" and "Delete". Clicking on the "Edit" button will bring you to the Update Food Form. I did so using a tag with food id populated by ejs.
 ```html
 <a href="./update?id=<%- food.id %>">Edit</a>
 ```
 
-When the browser goes to ./update?id=..., the following routing handler takes place:
+When the browser goes to ./update?id=..., the following routing handler takes place: (Extracted from main.js line 106)
 ```js
-/** Update Page */
 app.get("/update", function(req, res){
-    if (req.query.id) { // update the food item with id
-        // searching in the database with the provided id
+    if (req.query.id) {
         let word = [req.query.id];
         let sqlquery = "SELECT * FROM foods WHERE id = ?;";
 
-        // execute sql query
         db.query(sqlquery, word, (err, result) => {
             if (err) {
                 var error_msg = "An error has occured. Please see the following error message: " + err.message;
@@ -442,11 +437,11 @@ app.get("/update", function(req, res){
 
 Basically it searches through the foods table to find food items with the id specified in the query parameter, by executing the SQL statement. If it cannot find any food items with the id, the following error page will be returned:
 
-![image](https://zachan.xyz/downloads/caloriebuddy-md-img/15.png "Update Food Page: Server Error")
+![image](./README-imgs/15.png "Update Food Page: Server Error")
 
 If the food item with the id exists, it will render views\update.html which populate the food data to the update form like this:
 
-![image](https://zachan.xyz/downloads/caloriebuddy-md-img/16.png "Update Food Page: the Update Form")
+![image](./README-imgs/16.png "Update Food Page: the Update Form")
 
 If you look at views\update.html, it simply renders views\partials\form.html using ejs:
 ```html
@@ -481,14 +476,12 @@ On clicking the submit button of the form, it posts to ./foodupdated route:
 ```
 The if statement in the ejs is just a switch for different pages. Since this is the form for Update Food Page, the POST action equals ./foodupdated route.
 
-The form data then is collected and handled by ./foodupdated route handler in main.js. On line 87:
+The form data then is collected and handled by ./foodupdated route handler in main.js. On line 143:
 ```js
-/** Update Result Page (Food Updated or Error) */
 app.post("/foodupdated", function(req, res){
-    // saving data in database
     let sqlquery = "UPDATE foods SET name=?, typicalValue=?, unit=?, calories=?, carbs=?, fat=?, protein=?, salt=?, sugar=? WHERE id=?;";
-    // execute sql query
     let update_record = [req.body.name, req.body.typicalValue, req.body.unit, req.body.calories, req.body.carbs, req.body.fat, req.body.protein, req.body.salt, req.body.sugar, req.body.id];
+
     db.query(sqlquery, update_record, (err, result) => {
         if (err) {
             console.error(err.message);
@@ -503,15 +496,15 @@ The SQL statement is defined using the request body and is executed using db.que
 
 Take a food item say Milk Chocolate as an example, I updated the calories of it from 37 to 100 in the form:
 
-![image](https://zachan.xyz/downloads/caloriebuddy-md-img/17.png "Update Food Page: Updated Form")
+![image](./README-imgs/17.png "Update Food Page: Updated Form")
 
 After form submittion, the food record is stored in the database. By using MySQL Workbench, we can see the record in the table:
 
-![image](https://zachan.xyz/downloads/caloriebuddy-md-img/18.png "Database: Updated food item")
+![image](./README-imgs/18.png "Database: Updated food item")
 
 And views\foodupdated.html will be rendered using a card with the updated food data:
 
-![image](https://zachan.xyz/downloads/caloriebuddy-md-img/19.png "Update Food Page: Updated Result")
+![image](./README-imgs/19.png "Update Food Page: Updated Result")
 
 
 #### **R5C**
@@ -519,7 +512,7 @@ And views\foodupdated.html will be rendered using a card with the updated food d
 
 As I have mentioned before, "Delete" button exists at the bottom-right of each food card:
 
-![image](https://zachan.xyz/downloads/caloriebuddy-md-img/20.png "Update Food Page: Delete button")
+![image](./README-imgs/20.png "Update Food Page: Delete button")
 
 The code is in views\partials\card.html. On line 51 you can see the button html:
 ```html
@@ -528,7 +521,7 @@ The code is in views\partials\card.html. On line 51 you can see the button html:
 
 You can see instead of redirecting to any route, a div with class modal will be pop up to ask 'Are you sure?' first. The prompt looks like this:
 
-![image](https://zachan.xyz/downloads/caloriebuddy-md-img/21.png "Update Food Page: Delete -> Are you sure Prompt")
+![image](./README-imgs/21.png "Update Food Page: Delete -> Are you sure Prompt")
 
 When you click "DELETE" in the prompt, the following form (card.html line 70) will be submitted:
 ```html
@@ -541,14 +534,12 @@ When you click "DELETE" in the prompt, the following form (card.html line 70) wi
 
 This form wraps food id and food name up and send to ./fooddeleted route using HTTP POST method.
 
-And the route handler looks like this in the code in routes\main.js:
+And the route handler looks like this in the code in routes\main.js: (Extracted from main.js line 195)
 ```js
-/** Delete Result Page (Food Deleted or Error) */
 app.post("/fooddeleted", function(req, res){
-    // deleting data from database
     let sqlquery = "DELETE FROM foods WHERE id=?;";
-    // execute sql query
     let delete_record = [req.body.id];
+
     db.query(sqlquery, delete_record, (err, result) => {
         if (err) {
             console.error(err.message);
@@ -563,19 +554,17 @@ The SQL statement is defined using the request body and is executed using db.que
 
 Upon successful deletion, views\fooddeleted.html will be rendered to display a message indicating the delete has been done:
 
-![image](https://zachan.xyz/downloads/caloriebuddy-md-img/22.png "Update Food Page: Deleted")
+![image](./README-imgs/22.png "Update Food Page: Deleted")
 
 ### [**R6: List foods page**](https://zach-nodejs-caloriebuddy.herokuapp.com/list)
 #### **R6A**
 *R6A: Display all foods stored in the database including name, typical values, unit of the typical value, calories, carbs, fat, protein, salt, and sugar, sorted by name.*
 
-When the browser goes to ./list route, the following route handler takes place:
+When the browser goes to ./list route, the following route handler takes place: (Extracted from main.js line 170)
 ```js
-/** List All Page */
 app.get("/list", (req, res) => {
-    // query database to get all the foods
     let sqlquery = "SELECT * FROM foods ORDER BY name;";
-    // execute sql query
+
     db.query(sqlquery, (err, result) => {
         if (err) {
             res.redirect("/");
@@ -590,14 +579,14 @@ If server error occurs that it cannot list, it redirects to the Home Page.
 
 If everything sounds fine, views\list.html will be rendered with the array of food items. It looks like this:
 
-![image](https://zachan.xyz/downloads/caloriebuddy-md-img/23.png "List Food Page")
+![image](./README-imgs/23.png "List Food Page")
 
 #### **R6B**
 *R6B: Display a link to the home page or a navigation bar that contains links to other pages.*
 
 Since all pages uses the same _Layout.html, they share the same navbar that contains links to other pages:
 
-![image](https://zachan.xyz/downloads/caloriebuddy-md-img/24.png "List Food Page: Navbar")
+![image](./README-imgs/24.png "List Food Page: Navbar")
 
 #### **R6C**
 *R6C: going beyond by letting users select some food items (e.g. by displaying a checkbox next to each food item and letting the user input the amount of each food item in the recipe e.g. 2x100 g flour). Then collect the name of all selected foods and calculate the sum of the nutritional information (calories, carbs, fat, protein, salt, and sugar) related to all selected food items for a recipe or a meal and display them as ‘nutritional information and calorie count of a recipe or a meal’. Please note, it is not necessary to store recipes or meals in the database.*
@@ -606,7 +595,7 @@ I achieved this requirement purely using front-end coding. There are no operatio
 
 On the list page, you can see there is a big button "Calculate Calories!". And for each card, after the table of food data, there is an input for user to input how many of the food item they want to select to be involved in the calculation of the recipe:
 
-![image](https://zachan.xyz/downloads/caloriebuddy-md-img/25.png "List Food Page: Allows selection")
+![image](./README-imgs/25.png "List Food Page: Allows selection")
 
 The "Calculate Calories!" has the following HTML code:
 ```html
@@ -632,7 +621,7 @@ For details, please see _Layout.html line 70.
 
 After calculation, the modal containing the summary will be popup like this:
 
-![image](https://zachan.xyz/downloads/caloriebuddy-md-img/26.png "List Food Page: Calculation Summary")
+![image](./README-imgs/26.png "List Food Page: Calculation Summary")
 
 ## Database Structure
 
@@ -642,21 +631,33 @@ This part aims to summarize the structure for the table(s) including purpose, fi
 The database only contains 1 table: foods.
 
 #### **foods**
-The purpose of this table is to store food items.
+The purpose of this table "foods" is to store food items.
 
 | Field Name   | Data Type(Size) | Unsigned | Not Null | Auto Increment | Primary Key | Unique Key |
-|--------------|-----------------|----------|----------|----------------|-------------|------------|
-| id           | Integer(1)      |          |     ✔    |        ✔       |      ✔      |      ✔     |
+|--------------|-----------------|:--------:|:--------:|:--------------:|:-----------:|:----------:|
+| id           | Integer(1)      |          |     ✔    |       ✔       |      ✔      |      ✔    |
 | name         | Varchar(100)    |          |     ✔    |                |             |            |
-| typicalValue | Decimal(5,2)    |     ✔    |     ✔    |                |             |            |
+| typicalValue | Decimal(5,2)    |     ✔    |     ✔   |                |             |            |
 | unit         | Varchar(50)     |          |     ✔    |                |             |            |
-| calories     | Decimal(5,2)    |     ✔    |     ✔    |                |             |            |
-| carbs        | Decimal(5,2)    |     ✔    |     ✔    |                |             |            |
-| fat          | Decimal(5,2)    |     ✔    |     ✔    |                |             |            |
-| protein      | Decimal(5,2)    |     ✔    |     ✔    |                |             |            |
-| salt         | Decimal(5,2)    |     ✔    |     ✔    |                |             |            |
-| sugar        | Decimal(5,2)    |     ✔    |     ✔    |                |             |            |
+| calories     | Decimal(5,2)    |     ✔    |     ✔   |                |             |            |
+| carbs        | Decimal(5,2)    |     ✔    |     ✔   |                |             |            |
+| fat          | Decimal(5,2)    |     ✔    |     ✔   |                |             |            |
+| protein      | Decimal(5,2)    |     ✔    |     ✔   |                |             |            |
+| salt         | Decimal(5,2)    |     ✔    |     ✔   |                |             |            |
+| sugar        | Decimal(5,2)    |     ✔    |     ✔   |                |             |            |
 
+| Field Name   | Description                                       | 
+|--------------|---------------------------------------------------|
+| id           | unique identification number for the food item    |
+| name         | name of the food item                             |
+| typicalValue | typical value of the food item                    |
+| unit         | unit of the typical value of the food item        |
+| calories     | how many units of calories the food item has      |
+| carbs        | how many units of carbohydrates the food item has |
+| fat          | how many units of fat the food item has           |
+| protein      | how many units of protein the food item has       |
+| salt         | how many units of salt the food item has          |
+| sugar        | how many units of sugar the food item has         |
 
 ## Conclusion
 
