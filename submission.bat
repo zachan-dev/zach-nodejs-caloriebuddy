@@ -12,6 +12,7 @@ echo F|xcopy all.sql all.mysql
 "C:\Program Files\7-Zip\7z.exe" a -tzip ".\submission.zip" "documentation.pdf"
 "C:\Program Files\7-Zip\7z.exe" a -tzip ".\submission.zip" "source.txt"
 
+"C:\Program Files\7-Zip\7z.exe" d ".\submission.zip" "mid-term\mysql_start.sh"
 "C:\Program Files\7-Zip\7z.exe" d ".\submission.zip" "mid-term\all.sql"
 "C:\Program Files\7-Zip\7z.exe" d ".\submission.zip" "mid-term\documentation.pdf"
 "C:\Program Files\7-Zip\7z.exe" d ".\submission.zip" "mid-term\source.txt"
