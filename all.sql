@@ -1,3 +1,5 @@
+CREATE DATABASE  IF NOT EXISTS `calorieBuddy` /*!40100 DEFAULT CHARACTER SET utf8 */;
+USE `calorieBuddy`;
 -- MySQL dump 10.13  Distrib 5.7.31, for Linux (x86_64)
 --
 -- Host: localhost    Database: calorieBuddy
